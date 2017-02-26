@@ -31,6 +31,7 @@ public class ProgressDialog extends DialogFragment {
             fragment.dismiss();
         }
         fragment = new ProgressDialog();
+        fragment.setCancelable(false);
         fragment.show(manager, TAG);
     }
 
@@ -50,6 +51,7 @@ public class ProgressDialog extends DialogFragment {
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.GINGERBREAD) {
             AlertDialog.Builder builder = new AlertDialog.Builder(activity);
             builder.setView(binding.getRoot());
+            builder.setCancelable(false);
             dialog = builder.create();
         } else {
             dialog = new Dialog(activity);
