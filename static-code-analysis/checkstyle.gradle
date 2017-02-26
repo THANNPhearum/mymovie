@@ -1,0 +1,25 @@
+apply plugin: 'checkstyle'
+
+check.dependsOn 'checkstyle'
+
+task checkstyle(type: Checkstyle) {
+    ignoreFailures = true
+    configFile file("${project.rootDir}/static-code-analysis/config/checkstyle.xml")
+
+    source "${project.rootDir}/app/src"
+    includes = ["**/*.java"]
+    classpath = files()
+
+    doLast {
+        // convert report from xml to html
+        if (file(reports.xml.destination.parent).exists()) {
+            ant.xslt(in: reports.xml.destination,
+                    style: new File("${project.rootDir}/static-code-analysis/config/checkstyle-noframes-sorted.xsl"),
+                    out: new File("${reports.xml.destination.parent}", 'checkstyle-report.html'))
+        }
+    }
+}
+
+checkstyle {
+    toolVersion = "6.3"
+}

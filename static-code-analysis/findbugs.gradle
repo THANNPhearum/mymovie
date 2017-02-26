@@ -1,0 +1,29 @@
+/**
+ * Plugin document
+ * http://www.gradle.org/docs/current/dsl/org.gradle.api.plugins.quality.FindBugs.html
+**/
+apply plugin: 'findbugs'
+
+check.dependsOn 'findbugs'
+
+task findbugs (type: FindBugs) {
+    ignoreFailures = true
+
+    classes = files("${project.buildDir}/intermediates/classes")
+    source "${project.rootDir}/app/src"
+    include "**/*.java"
+    classpath = files()
+
+    effort = "max"
+    reportLevel = "low"
+    maxHeapSize = "512m"
+    reportLevel = "medium"
+    excludeFilter = file("${project.rootDir}/static-code-analysis/config/findbugs-exclude-filtering.xml")
+
+    reports {
+        xml.enabled = false
+        html.enabled = true
+        xml.destination "$project.buildDir/reports/findbugs/findbugs-output.xml"
+        html.destination "$project.buildDir/reports/findbugs/findbugs-output.html"
+    }
+}

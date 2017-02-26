@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+    <Match>
+        <Package name="~android.*"/>
+    </Match>
+    <Match>
+        <Package name="~com\.google.*"/>
+    </Match>
+    <Match>
+        <Class name="~[a-zA-Z0-9,\.]*\.R[\$,\.]+.*"/>
+    </Match>
+</FindBugsFilter>

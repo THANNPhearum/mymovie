@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MyMovie</string>
+    <string name="book_movie">Booking Movie Now</string>
+    <string name="general_no_internet_connection">No Internet!</string>
+</resources>

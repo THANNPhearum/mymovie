@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MyMovie-Test</string>
+    <string name="book_movie">Book Movie Now</string>
+    <string name="no_network_connection">OFFLINE - No Network Connection!</string>
+</resources>
